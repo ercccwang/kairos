@@ -20,7 +20,6 @@
         }
     </script>
     <style>
-        /* === 深色主题（默认） === */
         :root {
             --bg: #060606; --card: #0b0b0b; --card-up: #111111;
             --border: #1a1a1a; --fg: #e8e8e8; --muted: #555;
@@ -40,8 +39,6 @@
             --glow-top: rgba(0,255,136,0.06); --glow-bottom: rgba(0,255,136,0.025);
             --particle-r: 0; --particle-g: 255; --particle-b: 136;
         }
-
-        /* === 浅色主题 === */
         [data-theme="light"] {
             --bg: #f5f5f5; --card: #ffffff; --card-up: #ffffff;
             --border: #e2e2e2; --fg: #1a1a1a; --muted: #888;
@@ -61,7 +58,6 @@
             --glow-top: rgba(0,168,90,0.04); --glow-bottom: rgba(0,168,90,0.015);
             --particle-r: 0; --particle-g: 140; --particle-b: 70;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans SC', 'Space Grotesk', sans-serif;
@@ -69,7 +65,6 @@
             min-height: 100vh; overflow-x: hidden;
             transition: background-color 0.35s ease, color 0.35s ease;
         }
-
         .grid-bg {
             position: fixed; inset: 0;
             background-image:
@@ -77,7 +72,6 @@
                 linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
             background-size: 64px 64px;
             pointer-events: none; z-index: 0;
-            transition: background-image 0.35s ease;
         }
         .top-glow {
             position: fixed; top: -260px; left: 50%; transform: translateX(-50%);
@@ -96,22 +90,18 @@
             width: 100%; height: 100%;
             pointer-events: none; z-index: 1;
         }
-
-        /* === 主题切换按钮 === */
         #themeToggle {
             position: fixed; top: 1.2rem; right: 1.2rem; z-index: 50;
             width: 40px; height: 40px; border-radius: 50%;
             border: 1px solid var(--border); background: var(--card);
             color: var(--muted); cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem;
-            transition: all 0.25s ease;
+            font-size: 0.9rem; transition: all 0.25s ease;
         }
         #themeToggle:hover {
             border-color: var(--accent-border); color: var(--accent);
             box-shadow: 0 0 16px var(--accent-glow);
         }
-
         .brand {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
@@ -133,8 +123,6 @@
             animation: slideLine 3s ease-in-out infinite;
         }
         @keyframes slideLine { 0% { left: -60%; } 100% { left: 100%; } }
-
-        /* === 时间格子 === */
         .time-cell {
             height: 46px; display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--border); border-radius: 6px;
@@ -152,7 +140,6 @@
             transform: translateY(-1px); animation: none;
         }
         .time-cell.available:active { transform: translateY(0) scale(0.98); }
-
         .time-cell.occupied {
             background: var(--special-bg); color: var(--occ-default);
             font-size: 0.75rem; cursor: pointer;
@@ -167,7 +154,6 @@
         .time-cell.occupied:hover .occ-default { display: none; }
         .time-cell.occupied:hover .occ-hover { display: inline; color: var(--occ-hover); }
         .time-cell.occupied:active { transform: translateY(0) scale(0.98); }
-
         .time-cell.booked {
             border-color: var(--booked-border); background: var(--booked-bg);
             color: var(--booked); font-size: 0.72rem; font-weight: 400;
@@ -176,8 +162,6 @@
             0%, 100% { box-shadow: 0 0 0 0 transparent; }
             50% { box-shadow: 0 0 14px rgba(0,255,136,0.08); }
         }
-
-        /* === 弹窗 === */
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.65);
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -225,7 +209,6 @@
             transition: background 0.35s ease, border-color 0.35s ease;
         }
         .special-notice i { margin-top: 2px; color: var(--special); flex-shrink: 0; }
-
         .toast-container {
             position: fixed; top: 1.5rem; right: 1.5rem;
             z-index: 200; display: flex; flex-direction: column; gap: 0.5rem;
@@ -240,7 +223,6 @@
         .toast-item.hide { transform: translateX(120%); opacity: 0; }
         .toast-item.success { background: rgba(0,255,136,0.1); border: 1px solid var(--accent-border); color: var(--accent); }
         .toast-item.error { background: rgba(255,80,80,0.1); border: 1px solid rgba(255,80,80,0.25); color: #ff5050; }
-
         .day-tab {
             padding: 0.55rem 1.1rem; border: 1px solid var(--border); border-radius: 8px;
             background: transparent; color: var(--muted); font-size: 0.82rem;
@@ -249,7 +231,6 @@
         }
         .day-tab:hover { border-color: var(--special-border); color: var(--fg); }
         .day-tab.active { border-color: var(--accent-border); background: var(--accent-bg); color: var(--accent); }
-
         .legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
         .desk-grid { display: grid; grid-template-columns: 64px repeat(3, 1fr); gap: 5px; }
         .desk-header {
@@ -283,7 +264,6 @@
             box-shadow: 0 0 16px var(--special-glow);
         }
         .mobile-row.booked { border-color: var(--booked-border); background: var(--booked-bg); }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
@@ -292,12 +272,10 @@
         .anim-delay-1 { animation-delay: 0.1s; }
         .anim-delay-2 { animation-delay: 0.25s; }
         .anim-delay-3 { animation-delay: 0.4s; }
-
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
         *:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
         .watermark {
             position: fixed; bottom: 0.8rem; left: 50%; transform: translateX(-50%);
             font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem;
@@ -305,7 +283,6 @@
             user-select: none; pointer-events: none; z-index: 5; white-space: nowrap;
             transition: color 0.35s ease;
         }
-
         @media (prefers-reduced-motion: reduce) {
             .time-cell.available, .mobile-row.available { animation: none; }
             .brand-line-bar { animation: none; left: 0; }
@@ -325,10 +302,7 @@
     <div class="bottom-glow" aria-hidden="true"></div>
     <canvas id="particleCanvas" aria-hidden="true"></canvas>
 
-    <!-- 主题切换 -->
     <button id="themeToggle" aria-label="切换主题"><i class="fas fa-sun"></i></button>
-
-    <!-- 水印 -->
     <div class="watermark" aria-hidden="true">KAIROS &mdash; THE RIGHT MOMENT, by Runhong WANG</div>
 
     <main class="relative z-10 min-h-screen flex flex-col items-center px-4 pt-16 pb-12">
@@ -404,41 +378,17 @@
     <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
     <script>
-    /* ================================================================
-       配置
-       ================================================================ */
     const EMAILJS_SERVICE_ID   = 'service_y7bulrw';
     const EMAILJS_PUBLIC_KEY   = 'ZuxC4UldSktCB9wMy';
     const EMAILJS_TEMPLATE_ID  = 'template_xf5oq3r';
     const RECIPIENT_EMAIL      = 'ericwang.muc@gmail.com';
 
-    /* ================================================================
-       Firebase 实时同步配置（跨设备同步已预约状态）
-
-       不配置也能正常使用，只是无法跨设备同步。
-       如需同步，按以下步骤操作：
-
-       1. 打开 https://console.firebase.google.com
-       2. 点击「添加项目」→ 输入项目名 → 继续 → 创建项目
-       3. 左侧菜单 → Build → Realtime Database → 创建数据库
-       4. 选择「测试模式」→ 启用
-       5. 点击左上角 ⚙️ 齿轮 → 项目设置 → 向下滚动到「你的应用」
-       6. 点击 </> 图标（Web）→ 注册应用 → 复制下方 firebaseConfig
-       7. 把配置粘贴到下方 FIREBASE_CONFIG 中替换占位值
-       ================================================================ */
     const FIREBASE_CONFIG = {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: "",
-        appId: ""
+        apiKey: "", authDomain: "", databaseURL: "",
+        projectId: "", storageBucket: "",
+        messagingSenderId: "", appId: ""
     };
 
-    /* ================================================================
-       状态
-       ================================================================ */
     let selectedSlot   = null;
     let locallyBooked  = new Set();
     let mobileDayIdx   = 0;
@@ -449,16 +399,13 @@
     const END_HOUR   = 21;
     const WEEKDAYS   = ['周日','周一','周二','周三','周四','周五','周六'];
 
-    /* ================================================================
-       主题切换
-       ================================================================ */
+    /* === 主题 === */
     function initTheme() {
         const saved = localStorage.getItem('kairos-theme');
         if (saved) document.documentElement.setAttribute('data-theme', saved);
         updateThemeIcon();
         readParticleColor();
     }
-
     function toggleTheme() {
         const cur = document.documentElement.getAttribute('data-theme') || 'dark';
         const next = cur === 'dark' ? 'light' : 'dark';
@@ -467,33 +414,25 @@
         updateThemeIcon();
         readParticleColor();
     }
-
     function updateThemeIcon() {
         const isDark = (document.documentElement.getAttribute('data-theme') || 'dark') === 'dark';
         document.querySelector('#themeToggle i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     }
-
     function readParticleColor() {
         const s = getComputedStyle(document.documentElement);
         particleRGB.r = parseInt(s.getPropertyValue('--particle-r')) || 0;
         particleRGB.g = parseInt(s.getPropertyValue('--particle-g')) || 255;
         particleRGB.b = parseInt(s.getPropertyValue('--particle-b')) || 136;
     }
-
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
-    /* ================================================================
-       Firebase 初始化
-       ================================================================ */
+    /* === Firebase === */
     function initFirebase() {
         if (typeof firebase === 'undefined') return;
         if (!FIREBASE_CONFIG.apiKey || !FIREBASE_CONFIG.databaseURL) return;
-
         try {
             firebase.initializeApp(FIREBASE_CONFIG);
             const db = firebase.database();
-
-            // 实时监听已预约时段
             db.ref('bookedSlots').on('value', (snapshot) => {
                 const data = snapshot.val();
                 locallyBooked.clear();
@@ -501,7 +440,6 @@
                 renderDesktop();
                 renderMobile();
             });
-
             firebaseReady = true;
             console.log('Firebase 实时同步已连接');
         } catch (e) {
@@ -509,11 +447,9 @@
         }
     }
 
-    /* ================================================================
-       日期与日程 — 7月16/17/18日
-       ================================================================ */
+    /* === 日期与日程 — 7月19/20/21日 === */
     function getScheduleDates() {
-        return [16, 17, 18].map(d => {
+        return [19, 20, 21].map(d => {
             const dt = new Date(2025, 6, d);
             return {
                 date: dt,
@@ -526,9 +462,9 @@
 
     function buildAvailability() {
         return {
-            '2025-07-16': { available: [[15, 16]], booked: [] },
-            '2025-07-17': { available: [[14, 15]], booked: [[10,11],[11,12],[12,13]] },
-            '2025-07-18': { available: [[14, 15],[20, 21]], booked: [[17,18],[18,19],[19,20]] }
+            '2025-07-19': { available: [[13, 14], [19, 20]], booked: [] },
+            '2025-07-20': { available: [[13, 14], [19, 20]], booked: [] },
+            '2025-07-21': { available: [[17, 18], [19, 20]], booked: [] }
         };
     }
 
@@ -540,9 +476,7 @@
         return 'occupied';
     }
 
-    /* ================================================================
-       渲染 — 桌面端
-       ================================================================ */
+    /* === 桌面端渲染 === */
     function renderDesktop() {
         const dates = getScheduleDates(), config = buildAvailability();
         const el = document.getElementById('desktopView');
@@ -570,9 +504,7 @@
         el.innerHTML = h;
     }
 
-    /* ================================================================
-       渲染 — 移动端
-       ================================================================ */
+    /* === 移动端渲染 === */
     function renderMobile() {
         const dates = getScheduleDates(), config = buildAvailability();
         const el = document.getElementById('mobileView');
@@ -605,9 +537,7 @@
 
     function switchDay(i) { mobileDayIdx = i; renderMobile(); }
 
-    /* ================================================================
-       弹窗
-       ================================================================ */
+    /* === 弹窗 === */
     function handleCellClick(dateKey, hour, dateLabel, weekday, type) {
         openModal(dateKey, hour, dateLabel, weekday, type);
     }
@@ -662,9 +592,7 @@
     document.getElementById('closeModalBtn').addEventListener('click', closeModal);
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-    /* ================================================================
-       提交
-       ================================================================ */
+    /* === 提交 === */
     document.getElementById('submitBtn').addEventListener('click', async function() {
         const name  = document.getElementById('inputName').value.trim();
         const email = document.getElementById('inputEmail').value.trim();
@@ -697,7 +625,6 @@
                 message:    fullMessage
             });
 
-            // 本地立即标记已预约
             const slotKey = selectedSlot.dateKey + '-' + selectedSlot.hour;
             locallyBooked.add(slotKey);
             renderDesktop();
@@ -705,11 +632,9 @@
             closeModal();
             showToast(isSp ? '特殊申请已提交，等待人工确认' : '预约请求已发送，等待确认', 'success');
 
-            // 同步到 Firebase（如果可用）
             if (firebaseReady) {
                 firebase.database().ref('bookedSlots/' + slotKey).set({
-                    name: name,
-                    email: email,
+                    name: name, email: email,
                     time: selectedSlot.timeRange,
                     date: selectedSlot.dateLabel + ' ' + selectedSlot.weekday,
                     type: isSp ? '特殊申请' : '普通预约',
@@ -726,9 +651,7 @@
         }
     });
 
-    /* ================================================================
-       Toast
-       ================================================================ */
+    /* === Toast === */
     function showToast(message, type) {
         const container = document.getElementById('toastContainer');
         const el = document.createElement('div');
@@ -742,9 +665,7 @@
         }, 4500);
     }
 
-    /* ================================================================
-       粒子背景
-       ================================================================ */
+    /* === 粒子 === */
     function initParticles() {
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
@@ -752,7 +673,6 @@
         function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
         resize();
         window.addEventListener('resize', resize);
-
         const COUNT = 45;
         const pts = [];
         for (let i = 0; i < COUNT; i++) {
@@ -763,20 +683,16 @@
                 o: Math.random()*0.25+0.05
             });
         }
-
         let mx = -1000, my = -1000;
         document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-
         function frame() {
             ctx.clearRect(0, 0, W, H);
             const { r: pr, g: pg, b: pb } = particleRGB;
-
             for (const p of pts) {
                 const ddx = p.x - mx, ddy = p.y - my, dist = Math.sqrt(ddx*ddx + ddy*ddy);
                 if (dist < 120 && dist > 0) {
                     const f = (120 - dist) / 120 * 0.15;
-                    p.x += (ddx / dist) * f;
-                    p.y += (ddy / dist) * f;
+                    p.x += (ddx / dist) * f; p.y += (ddy / dist) * f;
                 }
                 p.x += p.dx; p.y += p.dy;
                 if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
@@ -786,7 +702,6 @@
                 ctx.fillStyle = `rgba(${pr},${pg},${pb},${p.o})`;
                 ctx.fill();
             }
-
             for (let i = 0; i < COUNT; i++) {
                 for (let j = i + 1; j < COUNT; j++) {
                     const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
@@ -806,9 +721,7 @@
         frame();
     }
 
-    /* ================================================================
-       初始化
-       ================================================================ */
+    /* === 启动 === */
     (function init() {
         emailjs.init(EMAILJS_PUBLIC_KEY);
         initTheme();
